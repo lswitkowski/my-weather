@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <title>AJAX</title>
+
+</head>
+<body><h1>AJAX</h1>
+    
+    <script>
+function displayUserName(response){
+
+response.data.forEach(user =>{
+    console.log(user.username);
+});
+
+
+let h1=document.querySelector("h1");
+h1.innerHTML= `Hey, ${response.data[0].username}!`;}
+
+
+let apiUrl = "https://jsonplaceholder.typicode.com/users/";
+ axios.get(apiUrl).then(displayUserName);
+    
+    </script>
+</body>
+</html>
