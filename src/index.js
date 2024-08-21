@@ -15,32 +15,40 @@ function displayWeather(response) {
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = temperature;
-  formatDate(date);
 }
 
 
-  function formatDate(date){
-  let minutes = date.getMinutes();
-  let hours = date.getHours();
-  let day = date.getDay();
+  function formatDate(date) {
+    let minutes = date.getMinutes();
+    let hours = date.getHours();
+    let day = date.getDay();
 
-  if (minutes < 10) {
-    minutes = `0${minutes}`; }
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
 
-  if (hours < 10) {
-    hours = `0${hours}`;}
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
 
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"];
+    let days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
 
-  let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
-}
+    let formattedDay = days[day];
+    return `${formattedDay} ${hours}:${minutes}`;
+  }
+
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", whatCity);
+
+let currentDateElement = document.querySelector("calendar");
+let currentDate = new Date();
+
+calendar.innerHTML = formatDate(currentDate);
